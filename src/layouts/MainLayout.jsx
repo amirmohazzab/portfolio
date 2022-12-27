@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 import Grid from "@mui/material/Unstable_Grid2";
-import { theme } from "./../ui/theme";
+import { theme } from "./theme";
 
 
 
