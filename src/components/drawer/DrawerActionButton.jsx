@@ -9,7 +9,9 @@ const DrawerActionButton = () => {
     const {setDrawerOpen} = useContext(MainContext);
     return (
         <Box
-                sx={{ display: {
+                sx={{ 
+                    position: "absolute",
+                    display: {
                     xs: "block",
                     sm: "block",
                     md: "none",

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Typography, Avatar, Box, IconButton } from "@mui/material";
 import {RandomReveal} from 'react-random-reveal';
 import {GitHub, LinkedIn, Telegram} from '@mui/icons-material';
+import photo from '../../assets/photo.jpg';
 
 const SidebarHeader = () => {
 
@@ -9,7 +10,7 @@ const SidebarHeader = () => {
     return (
         <>  
         <Avatar
-        src={require("../../assets/photo.jpg")}
+        src={photo}
         variant="rounded"
         sx={{
           height: 150,
@@ -79,7 +80,7 @@ const SidebarHeader = () => {
                 </IconButton>
                 <IconButton aria-label="LinkedIn">
                     <a
-                        href="https://www.linkedin/in/ahmohazzab"
+                        href="https://www.linkedin.com/in/ahmohazzab"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
