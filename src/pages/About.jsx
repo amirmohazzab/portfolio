@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import {Helmet} from 'react-helmet-async';
 import CountUp from "react-countup";
+import {useTheme} from '@mui/material/styles';
 
 import {
     Tooltip,
@@ -22,7 +23,7 @@ import Skill from './components/Skill';
 import {devSkills} from '../constants/skills';
 import { devWorkInfo } from "../constants/details";
 
-const About = () => {
+const About = ({helmetTitle}) => {
 
     const [javascript, setJavascript] = useState(0);
     const [html, setHtml] = useState(0);
@@ -30,6 +31,8 @@ const About = () => {
     const [nodeJs, setNodeJs] = useState(0);
     const [reactJs, setReactJs] = useState(0);
     const [git, setGit] = useState(0);
+
+    const theme = useTheme();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -81,7 +84,7 @@ const About = () => {
             }}
         >
              <Helmet>
-                <title> Amir H. Mohazzab Website | About </title>
+                <title> {helmetTitle} </title>
             </Helmet>
             <CardContent>
                 <Grid container sx={{ mx: 3 }}>
@@ -114,12 +117,12 @@ const About = () => {
                         }}
                         >
                             <Chip
-                                color="primary"
+                                color={theme.palette.mode === "dark" ? "secondary" : "primary"}
                                 icon={<CodeRounded />}
                                 label={
                                     <Typography
                                         variant="body1"
-                                        color="black"
+                                        color={theme.palette.mode === "dark" ? "white" : "black"}
                                         sx={{ textAlign: "center" }}
                                     >
                                         React Developer
@@ -158,7 +161,7 @@ const About = () => {
                                                 label={
                                                     <Typography
                                                         variant="body1"
-                                                        color="whitesmoke"
+                                                        color={theme.palette.mode === "dark" ? "white" : "black"}
                                                     >
                                                         <CountUp
                                                             start={0}
@@ -194,12 +197,12 @@ const About = () => {
                             }}
                         >
                             <Chip
-                                color="secondary"
+                                color={theme.palette.mode === "dark" ? "secondary" : "primary"}
                                 icon={<SelfImprovementRounded />}
                                 label={
                                     <Typography
                                         variant="body1"
-                                        color="black"
+                                        color={theme.palette.mode === "dark" ? "white" : "black"}
                                         sx={{ textAlign: "center" }}
                                     >
                                         Skills

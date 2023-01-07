@@ -12,11 +12,11 @@ const SidebarFooter = () => {
             height: 100,
             }}
         >
-            <Typography variant="subtitle2" color="whitesmoke">
+            <Typography variant="subtitle2" color="text.primary">
             Designed by Amir H. Mohazzab
             </Typography>
 
-            <Typography variant="caption" color="whitesmoke" sx={{ mt: 2 }}>
+            <Typography variant="caption" color="text.primary" sx={{ mt: 2 }}>
             Copyright 2022{" "}
             <CopyrightRounded sx={{ verticalAlign: "middle", height: 16 }} />
             </Typography>

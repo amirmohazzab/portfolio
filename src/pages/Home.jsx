@@ -8,7 +8,7 @@ import {links} from '../constants/particles';
 import TextTransition, {presets} from 'react-text-transition';
 import {Helmet} from 'react-helmet-async';
 
-const Home = () => {
+const Home = ({helmetTitle}) => {
 
     const [index, setIndex] = useState(0);
     const nameEl = useRef(null);
@@ -58,7 +58,7 @@ const Home = () => {
             alignItems: "center",
             }}>   
             <Helmet>
-                <title> Amir H. Mohazzab Website | Main page </title>
+                <title> {helmetTitle} </title>
             </Helmet>
             <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={links} /> 
             <Box component="div" sx={{display: "flex"}}> 

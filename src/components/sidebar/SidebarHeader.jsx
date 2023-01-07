@@ -3,12 +3,14 @@ import {Typography, Avatar, Box, IconButton } from "@mui/material";
 import {RandomReveal} from 'react-random-reveal';
 import {GitHub, LinkedIn, Telegram} from '@mui/icons-material';
 import photo from '../../assets/photo.jpg';
+import ThemeActionButton from '../ThemeActionButton';
 
 const SidebarHeader = () => {
 
     const [start, setStart] = useState(false);
     return (
         <>  
+        <ThemeActionButton />
         <Avatar
         src={photo}
         variant="rounded"
