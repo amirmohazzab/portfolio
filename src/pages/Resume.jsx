@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";   
-import {useTheme} from '@mui/material/styles';
-import EllipsisText from 'react-ellipsis-text'; 
+import { Helmet } from "react-helmet-async";
+import EllipsisText from "react-ellipsis-text";
 import {
   Typography,
   Card,
   CardContent,
-  Divider,
-  Chip,
   Slide,
   CardActionArea,
   CardActions,
@@ -15,20 +12,25 @@ import {
   Box,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { TextSnippetRounded, HomeRepairServiceRounded, SchoolRounded, OpenInNew} from "@mui/icons-material";
+import {
+  TextSnippetRounded,
+  SchoolRounded,
+  OpenInNew,
+  HomeRepairServiceRounded,
+} from "@mui/icons-material";
+import { CustomDivider } from "./../components/common";
 
-const MyResume = ({helmetTitle}) => {
-    const [loading, setLoading] = useState(false);
+const MyResume = ({ helmetTitle }) => {
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        setLoading(true);
+  useEffect(() => {
+    setLoading(true);
 
-        return () => {
-            setLoading(false);
-        };
-    }, []);
+    return () => {
+      setLoading(false);
+    };
+  }, []);
 
-    const theme = useTheme();
 
   return (
     <Card
@@ -42,204 +44,130 @@ const MyResume = ({helmetTitle}) => {
         <title> {helmetTitle} </title>
       </Helmet>
       <CardContent>
+        <CustomDivider
+          bColor="error.main"
+          cColor="error"
+          icon={<TextSnippetRounded />}
+          align="center"
+          text="Resume"
+        />
+
+        <Grid container sx={{ mt: 4 }}>
+          <Grid xs={6}>
+            <CustomDivider
+              bColor="warning.main"
+              cColor="warning"
+              icon={<HomeRepairServiceRounded />}
+              align="center"
+              text="Experience"
+            />
+
             <Slide
-                    direction="down"
-                    in={loading}
-                    style={{
-                        transitionDelay: loading ? "100ms" : "0ms",
-                    }}
+              direction="up"
+              in={loading}
+              style={{
+                transitionDelay: loading ? "400ms" : "0ms",
+              }}
+            >
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 10 }}>
+                <Card
+                  sx={{
+                    maxWidth: 300,
+                    maxHeight: 300,
+                    backgroundColor: "warning.main",
+                  }}
                 >
-                    <Divider
-                        textAlign="center"
-                        sx={{
-                            "&::before, &::after": {
-                                borderColor: "primary.main",
-                            },
-                            mb: 3,   
-                        }}
-                    >
-                        <Chip
-                            icon={<TextSnippetRounded />}
-                            color={theme.palette.mode === "dark" ? "secondary" : "primary"}
-                            label={
-                                <Typography
-                                    variant="body1"
-                                    color={theme.palette.mode === "dark" ? "white" : "black"}
-                                    sx={{ textAlign: "center" }}
-                                >
-                                      My Resume
-                                </Typography>
-                            }
-                            sx={{ p: 3 }}
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography variant="body1" textAlign="left" gutterBottom>
+                        React Developer
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        textAlign="left"
+                        gutterBottom
+                      >
+                        <EllipsisText
+                          text={
+                            "Support and development of the Website using React and NodeJS, 1/2021-present"
+                          }
+                          length={100}
                         />
-                    </Divider>
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button
+                      href="https://www.linkedin.com/in/ahmohazzab"
+                      size="small"
+                      color="primary"
+                      target="_blank"
+                    >
+                      more <OpenInNew fontSize="small" color="primary" />
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Box>
             </Slide>
-            <Grid container sx={{ mt: 4 }}>
-                    <Grid xs={6}>
-                        <Slide
-                            direction="down"
-                            in={loading}
-                            style={{
-                                transitionDelay: loading ? "200ms" : "0ms",
-                            }}
-                        >
-                            <Divider
-                                textAlign="center"
-                                sx={{
-                                    "&::before, &::after": {
-                                        borderColor: "warning.main",
-                                    },
-                                }}
-                            >
-                                <Chip
-                                    icon={<HomeRepairServiceRounded />}
-                                    color="warning"
-                                    label={
-                                        <Typography
-                                            variant="body1"
-                                            color={theme.palette.mode === "dark" ? "white" : "black"}
-                                            sx={{ textAlign: "center" }}
-                                        >
-                                            Experience
-                                        </Typography>
-                                    }
-                                    sx={{ p: 3 }}
-                                />
-                            </Divider>
-                        </Slide>
-                        
-                        <Slide
-                            direction="up"
-                            in={loading}
-                            style={{
-                                transitionDelay: loading ? "400ms" : "0ms",
-                            }}
-                        >
-                             <Box sx={{display: "flex", justifyContent: "center", mt: 10}}>  
-                            <Card sx={{
-                                        maxWidth: 300,
-                                        maxHeight: 300,
-                                        backgroundColor: "steelblue"
-                                    }}
-                            >
-                                <CardActionArea> 
-                                    <CardContent>
-                                                <Typography
-                                                    variant="body1"
-                                                    textAlign="left"
-                                                    gutterBottom
-                                                >
-                                                    React Developer
-                                                </Typography>
-                                                <Typography
-                                                variant="body2"
-                                                color="text.secondary"
-                                                textAlign="left"
-                                                gutterBottom
-                                                >
-                                                <EllipsisText 
-                                                text={"Support and development of the Website using React and NodeJS, 2021-2023"} 
-                                                length={100}
-                                                />
-                                                </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                        <Button
-                                            href="https://www.linkedin.com/in/ahmohazzab"
-                                            size="small"
-                                            color="primary"
-                                            target="_blank"
-                                        >
-                                             more <OpenInNew fontSize="small" color="primary"/>
-                                        </Button>
-                                </CardActions>
-                            </Card>
-                            </Box>
-                        </Slide>
-                    </Grid>
-                    
-                    <Grid xs={6}>
-                        <Slide
-                            direction="down"
-                            in={loading}
-                            style={{
-                                transitionDelay: loading ? "200ms" : "0ms",
-                            }}
-                        >
-                            <Divider
-                                textAlign="center"
-                                sx={{
-                                    "&::before, &::after": {
-                                        borderColor: "info.main",
-                                    },
-                                }}
-                            >
-                                <Chip
-                                    icon={<SchoolRounded />}
-                                    color="info"
-                                    label={
-                                        <Typography
-                                            variant="body1"
-                                            color={theme.palette.mode === "dark" ? "white" : "black"}
-                                            sx={{ textAlign: "center" }}
-                                        >
-                                            Education
-                                        </Typography>
-                                    }
-                                    sx={{ p: 3 }}
-                                />
-                            </Divider>
-                        </Slide>
-                        <Slide
-                            direction="up"
-                            in={loading}
-                            style={{
-                                transitionDelay: loading ? "400ms" : "0ms",
-                            }}
-                        >
-                            <Box sx={{display:"flex", justifyContent: "center", mt: 10}}> 
-                            <Card  sx={{
-                                        maxWidth: 300,
-                                        maxHeight: 300,
-                                        backgroundColor: "steelblue",
-                                    }}>
-                                <CardContent>
-                                            <Typography
-                                                variant="body1"
-                                                textAlign="left"
-                                                gutterBottom
-                                            >
-                                                Ph.D. Mechanical engineering
-                                            </Typography>
-                                            <Typography
-                                                variant="body2"
-                                                color="text.secondary"
-                                                textAlign="left"
-                                                gutterBottom
-                                            >
-                                            <EllipsisText 
-                                            text={"Politecnico di Milano, 2011-2014"} 
-                                            length={100}
-                                            />
-                                            </Typography>
-                                </CardContent>
-                                <CardActions>
-                                        <Button
-                                            href="https://www.linkedin.com/in/ahmohazzab"
-                                            size="small"
-                                            color="primary"
-                                            target="_blank"
-                                        >
-                                             more <OpenInNew fontSize="small" color="primary"/>
-                                        </Button>
-                                </CardActions>
-                            </Card>
-                            </Box>
-                        </Slide>
-                    </Grid>
-                </Grid>
-        </CardContent>
+          </Grid>
+
+          <Grid xs={6}>
+            <CustomDivider
+              bColor="info.main"
+              cColor="info"
+              icon={<SchoolRounded />}
+              align="center"
+              text="Education"
+            />
+
+            <Slide
+              direction="up"
+              in={loading}
+              style={{
+                transitionDelay: loading ? "400ms" : "0ms",
+              }}
+            >
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 10 }}>
+                <Card
+                  sx={{
+                    maxWidth: 300,
+                    maxHeight: 300,
+                    backgroundColor: "info.main",
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="body1" textAlign="left" gutterBottom>
+                      Ph.D. Mechanical engineering
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      textAlign="left"
+                      gutterBottom
+                    >
+                      <EllipsisText
+                        text={"Politecnico di Milano, 1/2011-9/2014"}
+                        length={100}
+                      />
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      href="https://www.linkedin.com/in/ahmohazzab"
+                      size="small"
+                      color="primary"
+                      target="_blank"
+                    >
+                      more <OpenInNew fontSize="small" color="primary" />
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Box>
+            </Slide>
+          </Grid>
+        </Grid>
+      </CardContent>
     </Card>
   );
 };

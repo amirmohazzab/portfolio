@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PagesContainer from "./PagesContainer";
 import MainLayout from "../layouts/MainLayout";
 import {Sidebar} from '../components/sidebar';
-import Page from "../pages/components/Page";
+import {Page} from "../components/pages";
 import { useMediaQuery} from "@mui/material";
 import SidebarContainer from "./SidebarContainer";
 import MainContext from '../context';
