@@ -11,6 +11,7 @@ import DrawerActionButton from './../components/drawer/DrawerActionButton';
 import SwipeableViews from 'react-swipeable-views';
 import {Home, About, Resume, Projects, Contact} from '../pages';
 
+
 function AppContainer() {
 
     const [pageNumber, setPageNumber] = useState(0);
@@ -23,7 +24,7 @@ function AppContainer() {
 
     useEffect(() => {
         setMode(prefersDarkMode ? "dark" : "light");
-    }, []);
+    }, [prefersDarkMode]);
 
     useEffect(() => {
         if (isMdUp) {

@@ -3,7 +3,6 @@ import { Typography, Card, CardContent, Slide } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { AccountCircle } from "@mui/icons-material";
 import { Helmet } from "react-helmet-async";
-import worldMap from "../assets/map.svg";
 import { CustomDivider } from "./../components/common";
 import { ContactForm } from "../components/pages";
 
@@ -54,7 +53,6 @@ const Contact = ({ helmetTitle }) => {
               md={4}
               sx={{
                 textAlign: "center",
-                backgroundImage: `url(${worldMap})`,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
               }}

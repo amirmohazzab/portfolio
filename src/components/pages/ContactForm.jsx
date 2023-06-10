@@ -1,11 +1,11 @@
-import ReCAPTCHA from "react-google-recaptcha";
+import axios from 'axios';
+import { toast } from "react-toastify";
 import {
   TextField,
   InputAdornment,
   CardActions,
   Button,
   Grid,
-  Typography,
   CardContent,
 } from "@mui/material";
 import {
@@ -15,23 +15,38 @@ import {
 } from "@mui/icons-material";
 import { useFormik } from "formik";
 import { contactValidationSchema } from "../../validations/contactValidation";
-import { useTheme } from "@mui/material/styles";
 
 const ContactForm = () => {
-  const theme = useTheme();
+
+
+  const handleSubmit = async (values) => {
+    try {
+      const { status } = await axios.post("http://localhost:4000/api/register", values);
+
+      if (status === 200) {
+        toast.success("email was successfully sent", {
+          position: "top-right",
+          closeOnClick: true})
+      }
+
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   const contactInputNames = {
     fullname: "",
     email: "",
     subject: "",
-    message: "",
-    recaptcha: "",
+    message: ""
   };
 
   const formik = useFormik({
     initialValues: contactInputNames,
-    onSubmit: (values) => {
+    onSubmit: (values, {resetForm}) => {
       console.log("Form Values: ", values);
+      handleSubmit(values);
+	  resetForm({ values: '' });
     },
     validationSchema: contactValidationSchema,
   });
@@ -140,29 +155,18 @@ const ContactForm = () => {
       <CardActions
         sx={{
           alignItems: "start",
-          flexDirection: "column",
-          mx: "auto"
+          flexDirection: "coloumn",
+          mx: "auto",
+          paddingRight: 2,
+          paddingLeft: 0
         }}
       >
-        <ReCAPTCHA
-          sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-          theme={theme.palette.mode}
-          hl="en"
-          onChange={(value) => {
-            formik.setFieldValue("recaptcha", value);
-          }}
-        />
-        {formik.errors.recaptcha && formik.touched.recaptcha && (
-          <Typography variant="caption" color="error">
-            {formik.errors.recaptcha}
-          </Typography>
-        )}
         <Button
           type="submit"
           color="success"
           variant="contained"
-          sx={{ mt: 2 }}
           fullWidth
+          sx={{mx: "auto"}}
         >
           Send
         </Button>

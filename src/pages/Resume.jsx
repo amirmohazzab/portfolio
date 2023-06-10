@@ -90,7 +90,7 @@ const MyResume = ({ helmetTitle }) => {
                       >
                         <EllipsisText
                           text={
-                            "Support and development of the Website using React and NodeJS, 1/2021-present"
+                            "Support and development of the Website using React and NodeJS, 01/2021-present"
                           }
                           length={100}
                         />
@@ -147,7 +147,7 @@ const MyResume = ({ helmetTitle }) => {
                       gutterBottom
                     >
                       <EllipsisText
-                        text={"Politecnico di Milano, 1/2011-9/2014"}
+                        text={"Politecnico di Milano, 01/2011-09/2014"}
                         length={100}
                       />
                     </Typography>

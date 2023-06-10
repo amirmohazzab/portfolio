@@ -5,5 +5,4 @@ export const contactValidationSchema = Yup.object().shape({
     email: Yup.string().email("Email is not Valid").required("Email is required"),
     subject: Yup.string().required("Subject is required"),
     message: Yup.string().required("Message is required"),
-    recaptcha: Yup.string().required("Captcha is required"),
 });
