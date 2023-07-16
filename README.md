@@ -7,8 +7,9 @@ This project is portfolio for show my skills, education, experinces and connecti
 - Html
 - Material UI
 - react
-- emotion/react
 - axios
+- nodejs
+- emotion/react
 - formik
 - react-countup
 - react-ellipsis-text
